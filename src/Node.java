@@ -9,6 +9,7 @@ public class Node<T> {
         data = null;
         next = null;
         previous = null;
+
     }
 
     public Node(T value) {
@@ -25,9 +26,6 @@ public class Node<T> {
         next = node;
     }
 
-    public void setPrevious(Node<T> node) {
-        previous = node;
-    }
 
     public T getData() {
         return data;
@@ -36,9 +34,9 @@ public class Node<T> {
     public Node<T> getNext() {
         return next;
     }
-
-    public Node<T> getPrevious() {
-        return previous;
+    @Override
+    public String toString() {
+        return (String)data;
     }
 
 }

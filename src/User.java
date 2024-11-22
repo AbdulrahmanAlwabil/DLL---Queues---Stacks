@@ -1,36 +1,71 @@
 
 public class User {
     public static void main(String[] args) {
-        ArrayQueue<Queue<Integer>> q = new ArrayQueue<>(15);
-        LinkedQueue<Integer> q1 = new LinkedQueue<>();
-        LinkedQueue<Integer> q2 = new LinkedQueue<>();
-        LinkedQueue<Integer> q3 = new LinkedQueue<>();
-
-        LinkedPQ<Integer> pq1 = new LinkedPQ<>();
-
-        DoubleLinkedList<Integer> dl1 = new DoubleLinkedList<>();
-        DoubleLinkedList<Integer> dl2 = new DoubleLinkedList<>();
-
         
-
-        LinkedStack<Integer> ls = new LinkedStack<>();
-        ArrayStack<Integer> as = new ArrayStack<>(10);
         
-        for (int i = 1; i <= 5; i++) {
-            dl1.insert(i);
-        }
-
-        for (int i = 5; i >= 1; i--) {
-            q1.enqueue(i);
-        }
-
-        dl1.print();
-        q1.print();
-        System.out.println(isReverse(dl1, q1));
-
+        
     }    
 
+    public static <T> void removeFirstHalf(Queue<T> q, T x) {
 
+        int qLength = q.length();
+        for (int i = 1; i <= qLength; i++) {
+            T tmp = q.serve();
+            if (!tmp.equals(x))
+                q.enqueue(tmp);
+            else if (tmp.equals(x) && i > qLength / 2)
+                q.enqueue(tmp);
+            
+            
+                
+        }
+    }
+
+    public static <T> T midElement(Stack<T> s) {
+
+        if (s.empty())
+            return null;
+        
+        Stack<T> tempStack = new LinkedStack<>();
+        int sCount = 0;
+        while (!s.empty()) {
+            tempStack.push(s.pop());
+            sCount++;
+        }
+
+        T tmp = null, mid = null;
+        for (int i = 0; i < sCount; i++) {
+            tmp = tempStack.pop();
+            s.push(tmp);
+            if (sCount / 2 == i)
+                mid = tmp;
+        }
+
+        return mid;
+
+    }
+
+    public static <T> void removeElement(List<T> l, T e) {
+
+        if (l.empty())
+            return;
+
+        l.findFirst();
+        while (!l.retrieve().equals(e)) {
+            l.findNext();
+        }
+
+        T tmp = null;
+        if (l.retrieve().equals(e))
+            tmp = l.retrieve();
+        else 
+            return;
+
+        l.remove();
+        while (!l.last())
+            l.findNext();
+        l.insert(tmp);
+    }
 
     public static boolean checkTotalTop(Stack<Integer> st) {
 
