@@ -1,10 +1,45 @@
 
 public class User {
     public static void main(String[] args) {
+        // Balanced BST
+        BST<String> bst1 = new BST<String>();
+        bst1.insert(50, "A");
+        bst1.insert(25, "B");
+        bst1.insert(75, "C");
+        bst1.insert(12, "D");
+        bst1.insert(37, "E");
+        bst1.insert(62, "F");
+        bst1.insert(87, "G");
         
+        // Right-heavy BST
+        BST<String> bst2 = new BST<String>();
+        for(int i = 10; i <= 50; i += 10) {
+            bst2.insert(i, "Val" + i);
+        }
         
+        // Left-heavy BST
+        BST<String> bst3 = new BST<String>();
+        for(int i = 50; i >= 10; i -= 10) {
+            bst3.insert(i, "Val" + i);
+        }
+
         
-    }    
+        BST<String> ex_bst = new BST<>();
+        ex_bst.insert(8, "A");
+        ex_bst.insert(12, "C");
+        ex_bst.insert(14, "G");
+        ex_bst.insert(10, "F");
+        ex_bst.insert(4, "B");
+        ex_bst.insert(5, "E");
+        ex_bst.insert(2, "D");
+        ex_bst.insert(1, "H");
+
+        ex_bst.printLevelOrder();
+        System.out.println("----------------------");
+        int i = ex_bst.countNodesInLevel(4);
+        System.out.println(i);
+    }  
+
 
     public static <T> void removeFirstHalf(Queue<T> q, T x) {
 
